@@ -1,6 +1,8 @@
 package br.gov.sp.fatec.orienteme.model;
 
-public  abstract class Pessoa {
+import lombok.Data;
+
+public @Data abstract class Pessoa {
     private Long id;
     private String name;
 }
