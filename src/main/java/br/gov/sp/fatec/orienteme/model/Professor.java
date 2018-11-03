@@ -13,10 +13,12 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 @Entity
 @Table(name="PRO_PROFESSOR")
+@ApiModel(value="Professor",description="Modelo professor | Id & Alunos")
 public @Data class Professor extends Pessoa {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
