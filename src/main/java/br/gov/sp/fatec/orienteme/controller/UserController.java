@@ -18,7 +18,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 @RequestMapping(value = "/usuarios")
 public class UserController {
 
-    @ApiOperation(value = "Cria usuario", response = User.class)
+    /*@ApiOperation(value = "Cria usuario", response = User.class)
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Usuario criado com sucesso!") })
     @RequestMapping(value = "/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_UTF8_VALUE)
     public ResponseEntity<Void> cadastrarEncaminhamento(User user, UriComponentsBuilder ucBuilder) {
@@ -26,7 +26,7 @@ public class UserController {
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/usuarios/{id}").buildAndExpand(user.getId()).toUri());
         return new ResponseEntity<Void>(headers, HttpStatus.CREATED);
-    }
+    }*/
 
     @ApiOperation(value = "Busca um usuario a partir do id", response = User.class)
     @ApiResponses(value = { @ApiResponse(code = 200, message = "Busca com sucesso!") })

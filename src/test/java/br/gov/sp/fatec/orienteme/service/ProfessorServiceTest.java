@@ -20,10 +20,10 @@ public class ProfessorServiceTest {
 
     Professor professor;
 
-    @Before
+    /*@Before
     public void preparaCenario() {
         this.professor = this.professorService.createProfessor(String name, String email);
-    }
+    }*/
 
     @Test
     public void buscaProfessorExistente() {
