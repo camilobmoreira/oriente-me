@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.sp.fatec.orienteme.model.Aluno;
 import br.gov.sp.fatec.orienteme.service.AlunoService;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 
 @RestController
 @RequestMapping(value = "/aluno")
@@ -20,8 +23,10 @@ public class AlunoController {
 	@Autowired
 	private AlunoService alunoService;
 	
+	@ApiOperation(value="Busca aluno pelo nome",response=Aluno.class)
+	@ApiResponses(value = { @ApiResponse(code = 200, message = "Busca realizada com sucesso com sucesso!") })
 	@RequestMapping(value = "/{nome}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-	public ResponseEntity<List<Aluno>> buscarAluno(@PathVariable String nome){
+	public ResponseEntity<List<Aluno>> buscarAlunoNome(@PathVariable String nome){
 		return ResponseEntity.ok(alunoService.pesquisarAluno(nome));
 	}
 
