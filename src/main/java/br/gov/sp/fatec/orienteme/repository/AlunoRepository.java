@@ -13,6 +13,8 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 	
 	List<Aluno> findAll();
 	
+	Optional<Aluno> findById(Long id);
+	
 	List<Aluno> findByName(String name);
 	
 	Optional<Aluno> findByRa(String ra);

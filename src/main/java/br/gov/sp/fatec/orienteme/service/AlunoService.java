@@ -6,10 +6,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.gov.sp.fatec.orienteme.exception.ResourceNotFoundException;
 import br.gov.sp.fatec.orienteme.model.Aluno;
 import br.gov.sp.fatec.orienteme.repository.AlunoRepository;
 
-@Service("alunoService")
+@Service
 public class AlunoService {
 	
 	@Autowired
@@ -29,17 +30,21 @@ public class AlunoService {
 	
 	public List<Aluno> todos(){
 		List<Aluno> listaAlunos = new ArrayList<Aluno>();
-		for(Aluno aluno : alunoRepository.findAll()) {
-			listaAlunos.add(aluno);
-		}
 		return listaAlunos;
 	}
 	
 	public List<Aluno> pesquisarAluno(String nome){
 		List<Aluno> listaAlunos = new ArrayList<Aluno>();
-		for (Aluno aluno : alunoRepository.findByName(nome)) {
-			listaAlunos.add(aluno);
-		}
 		return listaAlunos;
+	}
+	
+	public Aluno atualizarAluno(Aluno alunoReq) {
+		 return alunoRepository.findById(alunoReq.getId())
+				 .map(aluno ->{
+					 aluno.setName(alunoReq.getName());
+					 return alunoRepository.save(aluno);
+					 
+				 }).orElseThrow(() -> new ResourceNotFoundException("Aluno nao encontrado: " + alunoReq.getName()));
+		
 	}
 }
