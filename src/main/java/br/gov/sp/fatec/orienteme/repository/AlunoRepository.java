@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import br.gov.sp.fatec.orienteme.model.Aluno;
 
 @Repository
-public interface AlunoRepository extends PessoRepository {
+public interface AlunoRepository extends PessoRepository<Aluno> {
 	
 	List<Aluno> findAll();
 	

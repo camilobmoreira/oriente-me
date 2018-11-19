@@ -5,6 +5,8 @@ import lombok.Data;
 import javax.persistence.*;
 
 
+@Entity
+@Table(name = "MSG_MENSAGEM")
 public @Data class Mensagem {
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -12,10 +14,10 @@ public @Data class Mensagem {
 	private Long id;
 
 	@ManyToOne
-	@JoinColumn(name = "PES_ID")
+	@JoinColumn(name = "MSG_DE", referencedColumnName = "PES_ID")
 	private Pessoa de;
 
 	@ManyToOne
-	@JoinColumn(name = "PES_ID")
+	@JoinColumn(name = "MSG_PARA", referencedColumnName = "PES_ID")
 	private Pessoa para;
 }
