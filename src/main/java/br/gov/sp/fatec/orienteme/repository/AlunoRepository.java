@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
 import br.gov.sp.fatec.orienteme.model.Aluno;
 
 @Repository
-public interface AlunoRepository extends JpaRepository<Aluno, Long> {
+public interface AlunoRepository extends PessoRepository {
 	
 	List<Aluno> findAll();
 	
-	Optional<Aluno> findById(Long id);
+	Aluno findById(Long id);
 	
 	List<Aluno> findByName(String name);
 	
@@ -24,5 +24,7 @@ public interface AlunoRepository extends JpaRepository<Aluno, Long> {
 	Boolean existsByRa(String ra);
 	
 	Boolean existsByEmail(String email);
+
+	Aluno saveAndFlush(Aluno aluno);
 
 }

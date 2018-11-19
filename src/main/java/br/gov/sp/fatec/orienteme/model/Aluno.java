@@ -23,10 +23,6 @@ import lombok.Data;
 @Table(name="ALU_ALUNO")
 @ApiModel(value="Aluno",description="Anotacao Swagger Api em Aluno")
 public @Data class Aluno extends Pessoa {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="ALU_ID")
-    private Long id;
 	
 	@Column(name="ALU_RA")
 	private String ra;

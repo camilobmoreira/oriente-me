@@ -12,39 +12,31 @@ import br.gov.sp.fatec.orienteme.repository.AlunoRepository;
 
 @Service
 public class AlunoService {
-	
+
 	@Autowired
 	private AlunoRepository alunoRepository;
 
-	public void salvarAluno(Aluno aluno) {
-		alunoRepository.save(aluno);
+	public Aluno salvarAluno(Aluno aluno) {
+		return this.alunoRepository.saveAndFlush(aluno);
 	}
-	
+
 	public boolean emailExiste(String email) {
 		return alunoRepository.existsByEmail(email);
 	}
-	
+
 	public boolean raExiste(String ra) {
 		return alunoRepository.existsByRa(ra);
 	}
-	
+
 	public List<Aluno> todos(){
-		List<Aluno> listaAlunos = new ArrayList<Aluno>();
-		return listaAlunos;
+		return this.alunoRepository.findAll();
 	}
 	
 	public List<Aluno> pesquisarAluno(String nome){
-		List<Aluno> listaAlunos = new ArrayList<Aluno>();
-		return listaAlunos;
+		return this.alunoRepository.findByName(nome);
 	}
-	
+
 	public Aluno atualizarAluno(Aluno alunoReq) {
-		 return alunoRepository.findById(alunoReq.getId())
-				 .map(aluno ->{
-					 aluno.setName(alunoReq.getName());
-					 return alunoRepository.save(aluno);
-					 
-				 }).orElseThrow(() -> new ResourceNotFoundException("Aluno nao encontrado: " + alunoReq.getName()));
-		
+		 return this.alunoRepository.saveAndFlush(alunoReq);
 	}
 }
