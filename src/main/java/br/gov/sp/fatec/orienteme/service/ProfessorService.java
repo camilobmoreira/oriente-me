@@ -14,7 +14,7 @@ public class ProfessorService {
 	private ProfessorRepository professorRepository;
 	
 	public void salvarProfessor(Professor professor) {
-		if (professorRepository.existsByEmail(professor.getEmail())) {
+		if (!professorRepository.existsByEmail(professor.getEmail())) {
 			professorRepository.save(professor);
 		}else {
 			new BadRequestException("Professor ja existe!");
